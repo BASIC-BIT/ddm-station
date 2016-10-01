@@ -205,7 +205,14 @@ var/global/list/crematoriums = new/list()
 		locked = 0
 		update_icon()
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1) //you horrible people
-
+		for(var/obj/item/device/transfer_valve/B in contents)
+			B.merge_gases()
+		for(var/obj/machinery/syndicatebomb/B in contents)
+			B.explode_now = TRUE
+		for(var/obj/item/weapon/grenade/syndieminibomb/B in contents)
+			B.prime()
+		for(var/obj/item/weapon/grenade/B in contents)
+			B.prime()
 
 /*
  * Generic Tray
