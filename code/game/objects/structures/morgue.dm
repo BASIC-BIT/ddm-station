@@ -202,13 +202,15 @@ var/global/list/crematoriums = new/list()
 			B.explode_now = TRUE
 		for(var/obj/item/weapon/grenade/B in contents)
 			B.prime()
-			
+
+		sleep(10)
+
 		for(var/obj/O in contents) //obj instead of obj/item so that bodybags and ashes get destroyed. We dont want tons and tons of ash piling up
 			if(O != connected) //Creamtorium does not burn hot enough to destroy the tray
 				qdel(O)
 
 		new /obj/effect/decal/cleanable/ash(src)
-		sleep(30)
+		sleep(20)
 		locked = 0
 		update_icon()
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1) //you horrible people
